@@ -9,6 +9,19 @@
       content="Konakalla Teja Venkatesh — Full Stack Developer (MERN). Portfolio showcasing projects, skills, and contact information."
     />
     <title>Teja Venkatesh | Full Stack Developer</title>
+    <script>
+      (function () {
+        var stored = localStorage.getItem("theme");
+        var prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+        var theme =
+          stored === "light" || stored === "dark"
+            ? stored
+            : prefersDark
+              ? "dark"
+              : "light";
+        document.documentElement.setAttribute("data-theme", theme);
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>
