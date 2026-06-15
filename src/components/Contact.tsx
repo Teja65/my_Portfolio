@@ -1,11 +1,11 @@
-import { useState } from "react";
-import type { FormEvent } from "react";
-import { personalInfo } from "../data/portfolio";
+import { useState } from 'react';
+import type { FormEvent } from 'react';
+import { personalInfo } from '../data/portfolio';
 
 export default function Contact() {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [message, setMessage] = useState("");
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [message, setMessage] = useState('');
   const [sent, setSent] = useState(false);
 
   const handleSubmit = (event: FormEvent) => {
@@ -88,7 +88,8 @@ export default function Contact() {
           </button>
           {sent && (
             <p className="contact__note">
-              Your email client should open with the message pre-filled.
+              Your email client should open with the message pre-filled to{' '}
+              {personalInfo.email}.
             </p>
           )}
         </form>

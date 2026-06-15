@@ -18,7 +18,7 @@ export default function About() {
             </li>
             <li>
               <span>Focus</span>
-              <strong>Full Stack · MERN · TypeScript</strong>
+              <strong>Full Stack · MERN · JavaScript</strong>
             </li>
           </ul>
         </div>

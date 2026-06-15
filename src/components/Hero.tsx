@@ -1,15 +1,7 @@
-import { useState } from "react";
-import { personalInfo } from "../data/portfolio";
+import { Link } from 'react-router-dom';
+import { personalInfo } from '../data/portfolio';
 
 export default function Hero() {
-  const [imgError, setImgError] = useState(false);
-  const initials = personalInfo.name
-    .split(" ")
-    .map((part) => part[0])
-    .slice(0, 2)
-    .join("")
-    .toUpperCase();
-
   return (
     <section id="home" className="hero section">
       <div className="container hero__grid">
@@ -20,10 +12,14 @@ export default function Hero() {
           <p className="hero__tagline">{personalInfo.tagline}</p>
 
           <div className="hero__actions">
-            <a className="btn btn--primary" href="#projects">
+            <Link className="btn btn--primary" to="/projects">
               View Projects
-            </a>
-            <a className="btn btn--outline" href={personalInfo.resumePath} download>
+            </Link>
+            <a
+              className="btn btn--outline"
+              href={personalInfo.resumePath}
+              download={personalInfo.resumeFileName}
+            >
               Download Resume
             </a>
           </div>
@@ -37,21 +33,6 @@ export default function Hero() {
             </a>
             <a href={`mailto:${personalInfo.email}`}>Email</a>
           </div>
-        </div>
-
-        <div className="hero__photo-wrap">
-          {!imgError ? (
-            <img
-              className="hero__photo"
-              src={personalInfo.profileImage}
-              alt={personalInfo.name}
-              onError={() => setImgError(true)}
-            />
-          ) : (
-            <div className="hero__photo hero__photo--placeholder" aria-hidden>
-              {initials}
-            </div>
-          )}
         </div>
       </div>
     </section>

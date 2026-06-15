@@ -10,7 +10,7 @@
   --border: #e4e7ec;
   --accent: #2563eb;
   --accent-hover: #1d4ed8;
-  --shadow: 0 4px 24px rgba(15, 23, 42, 0.06);
+  --shadow: 0 6px 28px rgba(15, 23, 42, 0.16);
   --navbar-scrolled-bg: rgba(255, 255, 255, 0.92);
   --hero-placeholder-gradient: linear-gradient(135deg, #dbeafe, #e0e7ff);
   --focus-ring: rgba(37, 99, 235, 0.25);
@@ -119,14 +119,28 @@ button {
 }
 
 .navbar__brand {
-  border: none;
-  background: var(--text);
-  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   width: 2.5rem;
   height: 2.5rem;
+  border: 1px solid var(--border);
   border-radius: 8px;
-  font-weight: 700;
-  font-size: 0.85rem;
+  background: var(--surface);
+  padding: 0.35rem;
+  text-decoration: none !important;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.navbar__brand:hover {
+  background: var(--bg-muted);
+  border-color: var(--text-muted);
+}
+
+.navbar__brand-icon {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
 .navbar__links {
@@ -135,16 +149,19 @@ button {
   gap: 0.25rem;
 }
 
-.navbar__links button {
+.navbar__links a:not(.navbar__resume) {
   border: none;
   background: transparent;
   color: var(--text-muted);
   padding: 0.5rem 0.85rem;
   border-radius: 8px;
   transition: color 0.15s, background 0.15s;
+  text-decoration: none !important;
+  font-weight: 500;
 }
 
-.navbar__links button:hover {
+.navbar__links a:not(.navbar__resume):hover,
+.navbar__link--active {
   color: var(--text);
   background: var(--bg-muted);
 }
@@ -215,10 +232,17 @@ button {
 }
 
 .hero__grid {
-  display: grid;
-  grid-template-columns: 1.2fr 0.8fr;
-  gap: 3rem;
+  display: flex;
+  flex-direction: column;
   align-items: center;
+  text-align: center;
+}
+
+.hero__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 42rem;
 }
 
 .hero__greeting {
@@ -252,12 +276,14 @@ button {
 .hero__actions {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 0.75rem;
   margin-bottom: 2rem;
 }
 
 .hero__social {
   display: flex;
+  justify-content: center;
   gap: 1.25rem;
 }
 
@@ -508,6 +534,7 @@ button {
   gap: 0.4rem;
   font-size: 0.9rem;
   font-weight: 500;
+  color: var(--text);
 }
 
 .contact__form input,
@@ -517,7 +544,13 @@ button {
   border: 1px solid var(--border);
   border-radius: 8px;
   background: var(--bg);
+  color: var(--text);
   resize: vertical;
+}
+
+.contact__form input::placeholder,
+.contact__form textarea::placeholder {
+  color: var(--text-muted);
 }
 
 .contact__form input:focus,
@@ -593,7 +626,7 @@ button {
     transform: translateY(0);
   }
 
-  .navbar__links button {
+  .navbar__links a:not(.navbar__resume) {
     text-align: left;
     padding: 0.75rem 1rem;
   }

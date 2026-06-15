@@ -1,9 +1,12 @@
-import { useEffect, useState } from "react";
-import { useTheme } from "../context/ThemeContext";
-import { navLinks, personalInfo } from "../data/portfolio";
+import { useEffect, useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import { useTheme } from '../context/ThemeContext';
+import { navLinks, personalInfo } from '../data/portfolio';
 
-function ThemeIcon({ theme }: { theme: "light" | "dark" }) {
-  if (theme === "dark") {
+const siteIcon = '/favicon.svg';
+
+function ThemeIcon({ theme }: { theme: 'light' | 'dark' }) {
+  if (theme === 'dark') {
     return (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
         <circle cx="12" cy="12" r="4" />
@@ -21,37 +24,51 @@ function ThemeIcon({ theme }: { theme: "light" | "dark" }) {
 
 export default function Navbar() {
   const { theme, toggleTheme } = useTheme();
+  const { pathname } = useLocation();
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
-    window.addEventListener("scroll", onScroll);
-    return () => window.removeEventListener("scroll", onScroll);
+    window.addEventListener('scroll', onScroll);
+    return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  const scrollTo = (id: string) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
-    setMenuOpen(false);
-  };
+  const isActive = (path: string) =>
+    path === '/' ? pathname === '/' : pathname === path;
 
   return (
-    <header className={`navbar ${scrolled ? "navbar--scrolled" : ""}`}>
+    <header className={`navbar ${scrolled ? 'navbar--scrolled' : ''}`}>
       <div className="container navbar__inner">
-        <button className="navbar__brand" onClick={() => scrollTo("home")}>
-          TV
-        </button>
+        <Link
+          className="navbar__brand"
+          to="/"
+          aria-label="Home"
+          onClick={() => setMenuOpen(false)}
+        >
+          <img
+            src={siteIcon}
+            alt=""
+            className="navbar__brand-icon"
+            aria-hidden
+          />
+        </Link>
 
-        <nav className={`navbar__links ${menuOpen ? "navbar__links--open" : ""}`}>
+        <nav className={`navbar__links ${menuOpen ? 'navbar__links--open' : ''}`}>
           {navLinks.map((link) => (
-            <button key={link.id} onClick={() => scrollTo(link.id)}>
+            <Link
+              key={link.id}
+              to={link.path}
+              className={isActive(link.path) ? 'navbar__link--active' : ''}
+              onClick={() => setMenuOpen(false)}
+            >
               {link.label}
-            </button>
+            </Link>
           ))}
           <a
             className="navbar__resume"
             href={personalInfo.resumePath}
-            download
+            download={personalInfo.resumeFileName}
             onClick={() => setMenuOpen(false)}
           >
             Resume
@@ -64,7 +81,7 @@ export default function Navbar() {
             className="navbar__theme"
             onClick={toggleTheme}
             aria-label={
-              theme === "dark" ? "Switch to light mode" : "Switch to dark mode"
+              theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'
             }
           >
             <ThemeIcon theme={theme} />
