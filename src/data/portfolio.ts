@@ -24,7 +24,15 @@ export const projects = [
       'A full-stack expense management app with user authentication, secure API routes, and persistent data storage. Track income and expenses with a clean, responsive interface.',
     liveUrl: 'https://expense-tracker-xi-five-26.vercel.app/profile',
     repoUrl: 'https://github.com/Teja65/Expense_Tracker',
-    tech: ['React', 'TypeScript', 'Node.js', 'Express.js', 'MongoDB', 'JWT'],
+    tech: [
+      'React',
+      'TypeScript',
+      'Node.js',
+      'Express.js',
+      'MongoDB',
+      'Mongoose',
+      'JWT',
+    ],
   },
   {
     id: 'truth-or-dare',
@@ -33,7 +41,15 @@ export const projects = [
       'An interactive party game built with modern frontend tooling. Players draw random truth or dare prompts for a fun, shareable experience.',
     liveUrl: 'https://truth-or-dare-eta-five.vercel.app/',
     repoUrl: 'https://github.com/Teja65/TruthOrDare',
-    tech: ['React', 'TypeScript', 'Node.js', 'Express.js', 'MongoDB', 'JWT'],
+    tech: [
+      'React',
+      'TypeScript',
+      'Node.js',
+      'Express.js',
+      'MongoDB',
+      'Mongoose',
+      'JWT',
+    ],
   },
 ];
 
