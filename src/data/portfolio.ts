@@ -1,4 +1,4 @@
-import resumePdf from '../assets/Konakalla_Teja_Venkatesh_Resume.pdf';
+import resumePdf from '../assets/Konakalla_Teja_Venkatesh_resume.pdf';
 
 export const personalInfo = {
   name: 'Konakalla Teja Venkatesh',
@@ -13,7 +13,7 @@ export const personalInfo = {
   github: 'https://github.com/Teja65',
   linkedin: 'https://www.linkedin.com/in/konakalla-teja-venkatesh-b72a18243',
   resumePath: resumePdf,
-  resumeFileName: 'Konakalla_Teja_Venkatesh_Resume.pdf',
+  resumeFileName: 'Konakalla_Teja_Venkatesh_resume.pdf',
 };
 
 export const projects = [
