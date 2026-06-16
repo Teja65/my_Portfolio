@@ -40,7 +40,7 @@ export const projects = [
 export const skillCategories = [
   {
     title: 'Core Technologies',
-    skills: ['JavaScript', 'TypeScript', 'Java'],
+    skills: ['JavaScript', 'TypeScript', 'Java', 'SQL'],
   },
   {
     title: 'Frontend Frameworks & Libraries',
@@ -76,6 +76,7 @@ export const skillCategories = [
       'Node.js',
       'Express.js',
       'MongoDB',
+      'Mongoose',
       'JWT',
       'Git',
       'GitHub',
